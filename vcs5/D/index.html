@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D</title>
+    <script>
+        var main = function() {
+
+var paused = false
+
+$('.arrowR').click(function() {
+    paused = true;
+    $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+});
+    
+$('.arrowL').click(function() {
+    paused = true;
+    $('#slideshow > div:last')
+    .fadeIn(1000)
+    .prependTo('#slideshow')
+    .next()
+    .fadeOut(1000)
+    .end();
+});
+
+
+
+setInterval(function() {
+    if (paused === false) { 
+        $('#slideshow > div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slideshow');
+    };
+},  5000);
+
+
+};
+
+$(document).ready(main);
+    </script>
+    <style>
+
+.slideshow-container {
+  margin: 0;
+  max-width: 750px;
+  margin:10vh auto 0 auto;
+}
+
+.slideshow-container  div {
+  display: inline-block;
+}
+
+#slideshow {
+  margin: 0;
+	position: relative;
+	width: 620px;
+  height: 250px;
+}
+
+#slideshow > div {
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+}
+
+#slideshow img {
+	width: 100%;
+  margin: 0;
+  border: solid 1px #283593;
+}
+
+a {
+  width: 40px;
+  font-size: 64px;
+  display: inline-block;
+  color: #9FA8DA;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class=slideshow-container>
+        <a href="#" class="arrowL">&lt;</a>
+        <div id="slideshow">
+          <div><img src='1.jpg'/></div>
+          <div class="hidden"><img src='2.jpg'/></div>
+          <div class="hidden"><img src='3.jpg'/></div>
+        </div>
+        <a href="#" class="arrowR">&gt;</a>
+      </div>
+</body>
+</html>
